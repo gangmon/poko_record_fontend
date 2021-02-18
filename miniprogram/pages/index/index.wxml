@@ -1,0 +1,124 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="race">
+    <view>{{race[0]}}</view>
+    <view>{{race[1]}}</view>
+    <view>{{race[2]}}</view>
+    <view>{{race[3]}}</view>
+  </view>
+  <!-- 用户 openid -->
+  <view class="userinfo" wx:if="{{!logged}}">
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatar1}})"
+      size="default"
+      data-id="1"
+    >
+      <text style="padding-left:-30rpx;">爸</text>
+           
+    </button>
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatar2}})"
+      size="default"
+      data-id="2"
+
+    >
+      <text style="padding-left:-30rpx;">妈</text>
+    </button>
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatar3}})"
+      size="default"
+      data-id="3"
+
+    >
+      <text style="padding-left:-30rpx;">姐</text>
+    </button>
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatar4}})"
+      size="default"
+      data-id="4"
+    >
+      <text style="padding-left:-30rpx;">弟</text>
+
+    </button>
+  </view>
+    <!-- 用户 头 -->
+  <view class="userinfo" style="justify-content: space-between;" wx:if="{{logged}}">
+
+        <view
+          class="userinfo-avatar"
+          style="background-image: url({{avatar1}})"
+          size="default">
+            <view class="family-name">
+              <text >爸</text>
+            </view>
+
+        </view> 
+        <view
+          class="userinfo-avatar"
+          style="background-image: url({{avatar2}})"
+          size="default">
+          <view class="family-name">
+              <text >妈</text>
+            </view>
+        </view> 
+        <view
+          class="userinfo-avatar"
+          style="background-image: url({{avatar3}})"
+          size="default">
+            <view class="family-name">
+                <text >姐</text>
+              </view>
+        </view> 
+            
+        <view
+          class="userinfo-avatar"
+          style="background-image: url({{avatar4}})"
+          size="default">
+              <view class="family-name">
+              <text >弟</text>
+            </view>
+        </view> 
+
+  </view>
+  <view >
+    <scroll-view class="record" style="width: 100%; height: {{height-365}}rpx;" class="msg-box" scroll-y="{{true}}" scroll-into-view="{{toIndex}}"  enable-flex="{{true}}" scroll-with-animation="true">
+
+      <view id="{{'s'+item.id}}" class="record-list"  wx:for="{{lists}}" wx:key="{{item.id}}">
+        <view style="margin-left:100rpx">{{item.MyfamilyId1}}</view>
+        <view>{{item.MyfamilyId2}}</view>
+        <view>{{item.MyfamilyId3}}</view>
+        <view style="margin-right:100rpx">{{item.MyfamilyId4}}</view>
+      </view>
+    </scroll-view>
+  </view>
+  <form class="form-class" bindsubmit="bindOnformSubmit">
+        <view class="bottom">
+            <view class="bottom-view" hover-class="none" hover-stop-propagation="false">
+                <view class="input-view">
+                    <input class="input-content" bindblur="bindOnLostFocus"  type="number" bindfocus="bindOnFocusToDropDownText" adjust-position="{{false}}" confirm-hold="true" cursor-spacing="6"	 bindconfirm="bindconfirm" confirm-type="send" adjust-position="{{true}}" value="{{content}}" name="content"> {{content}}
+                    </input>
+                </view>
+
+                <!-- <view class="send-view"> -->
+                    <button class="send"  form-type="submit" >确认</button>
+                <!-- </view> -->
+            </view>
+        </view>
+
+    </form>
+
+
+
+</view>
